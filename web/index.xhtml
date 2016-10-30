@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+            <h:messages errorClass="errors" showDetail="true" 
+                        showSummary="true" warnStyle="color:blue" 
+                        infoStyle="color:green" errorStyle="color:red"/>
+            
+            <p:outputLabel value="Nombre " for="nombre"/>
+            <h:inputText id="nombre" title="Nombre Sucursal" value="#{sucrsalController.sucursal.nombresucursal}">
+            <p:message for="nombre" />
+            <f:validateLength for="nombre" minimum="10" maximum="20"/>
+            </h:inputText>
+            
+            <p:outputLabel value="Dirección " for="direccion"/>
+            <h:inputText id="direccion" title="Dirección" value="#{sucrsalController.sucursal.direccion}" />
+            <p:message for="direccion" />
+            
+            <p:outputLabel value="Telefono " for="telefono"/>
+            <h:inputText  id="telefono" title="Telefono" value="#{sucrsalController.sucursal.telefono}" required="true">
+            <f:validateLength for="telefono" minimum="7" maximum="10"/>
+            </h:inputText>
+            <p:message for="telefono" />
+            
+            <h:commandButton id="boton1" actionListener="#{sucrsalController.registrarSucursal()}" value="Enviar"/>
+            <p:commandButton id="boton2" actionListener="#{sucrsalController.registrarSucursal()}" value="Enviar2"/>
+            <p:dataTable id="mitabla" value="#{sucrsalController.listarSucursales()}" var="temp" 
+                         emptyMessage="No se encontraron registros" paginator="true"
+                         rows="3" paginatorPosition="bottom">
+                <p:column headerText="codigo" id="codigop" filterBy="#{temp.codsucursal}" filterMatchMode="contains">
+                    <h:outputText value="#{temp.codsucursal}"/>
+                </p:column>
+                <p:column headerText="nombresucursal" id="nombres" filterBy="#{temp.nombresucursal}" filterMatchMode="contains">
+                    <h:outputText value="#{temp.nombresucursal}"/>
+                </p:column>
+                <p:column headerText="direccion" id="direccions" filterBy="#{temp.direccion}" filterMatchMode="contains">
+                    <h:outputText value="#{temp.direccion}"/>
+                </p:column>
+                <p:column headerText="telefono" id="telefonos" filterBy="#{temp.telefono}" filterMatchMode="contains">
+                    <h:outputText value="#{temp.telefono}"/>
+                </p:column>
+                <p:column headerText="accion" id="eliminar">
+                    <p:commandButton value="eliminar" action="#{sucrsalController.eliminarSucursal(temp)}" icon="ui-icon-close" styleClass="ui-confirmdialog-no"/>
+                </p:column>
+            </p:dataTable>
+            
+            
+                      
+        </h:form>
+        
+    </h:body>
+</html>
+

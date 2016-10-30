@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        
+        <h:form>
+            <p:fieldset legend="Sucursales" >
+
+            </p:fieldset>
+            
+            <h:outputLabel value="Nombre" for="Nombre"/>
+            <h:inputText id="nombre" title="Nombre sucursal"value=""/>
+            <p:message for="nombre" />
+            
+            <h:outputLabel value="Direccion" for="direccion"/>
+            <h:inputText id="direccion"title="Direccion sucursal"value=""/>
+            <p:message for="direccion" />
+            
+            <h:outputLabel value="Telefono" for="Telefono"/>
+            <h:inputText id="telefono"title="telefono sucursal"value="" required="true">
+                <f:validateLength for="telefono" minimum="7" maximum="10"/>
+            <p:message for="telefono" />
+            
+            <p:commandButton id="boton" icon="ui-icon-check" value="registrarSucursal" />
+        </h:form>
+    </h:body>
+</html>
+
