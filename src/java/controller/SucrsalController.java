@@ -68,4 +68,8 @@ public class SucrsalController implements Serializable {
         SucursalEJB.remove(sucursal);
 
     }
+    
+    public void metodoPruebaGit(){
+        System.out.println("Prueba git");
+    }
 }
